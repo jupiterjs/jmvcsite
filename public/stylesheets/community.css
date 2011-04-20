@@ -1,0 +1,109 @@
+body {
+  font-family: "Lucida Grande", "Lucida Sans", Helvetica, Arial, Verdana, sans-serif;
+  background: #c2dbee; }
+
+header {
+  margin: 20px 0; }
+  header img {
+    float: left; }
+  header nav {
+    float: left;
+    margin-left: 20px; }
+    header nav ul {
+      list-style: none; }
+      header nav ul li {
+        float: left;
+        margin: 13px 10px 0 0; }
+        header nav ul li a {
+          display: block;
+          color: white;
+          background: #418bc4;
+          padding: 5px 10px;
+          text-decoration: none;
+          border-radius: 5px;
+          -moz-border-radius: 5px;
+          -webkit-border-radius: 5px; }
+          header nav ul li a:hover {
+            background: #2d6997; }
+
+#content {
+  background: white;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  padding: 10px; }
+
+footer {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 10px; }
+
+form.post {
+  width: 640px; }
+  form.post label {
+    display: block; }
+  form.post input[type="text"], form.post textarea, form.post input[type="url"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    border: 1px solid #999999;
+    background: #f0f0f0;
+    box-shadow: none;
+    padding: 5px 5px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px; }
+    form.post input[type="text"]#post_title, form.post textarea#post_title, form.post input[type="url"]#post_title {
+      font-size: 24px;
+      height: 24px;
+      line-height: 24px;
+      width: 628px; }
+    form.post input[type="text"]#post_body, form.post textarea#post_body, form.post input[type="url"]#post_body {
+      height: 180px;
+      line-height: 16px;
+      width: 628px;
+      font-family: "Lucida Grande", "Lucida Sans", Helvetica, Arial, Verdana, sans-serif;
+      font-size: 13px; }
+  form.post label {
+    margin-bottom: 5px; }
+
+.post-in-listing {
+  background: #f3f3f3;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px; }
+  .post-in-listing p {
+    margin: 0; }
+  .post-in-listing h2 {
+    font-size: 16px;
+    margin: 0; }
+    .post-in-listing h2 a {
+      color: #ff3300;
+      text-decoration: none; }
+  .post-in-listing .post-body {
+    margin-bottom: 10px; }
+  .post-in-listing .tags {
+    float: left;
+    width: 600px;
+    font-size: 11px; }
+    .post-in-listing .tags a {
+      background: #666666;
+      color: white;
+      padding: 3px 5px;
+      border-radius: 3px;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      text-decoration: none;
+      margin-right: 5px; }
+      .post-in-listing .tags a:hover {
+        background: #333333; }
+  .post-in-listing .posted-by {
+    float: right;
+    text-align: right;
+    width: 300px;
+    font-size: 11px; }
+  .post-in-listing .gist pre {
+    max-height: 200px; }

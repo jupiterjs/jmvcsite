@@ -1,0 +1,7 @@
+.post-in-listing
+  %h2= link_to post.title, post
+  - unless post.body.blank?
+    .post-body= post.processed_body.html_safe
+  .tags= post.tag_list.map{|t| link_to(t, tagged_with_path(t))}.join('').html_safe
+  .posted-by Posted by #{post.user.email} #{time_ago_in_words post.created_at} ago
+  .clear

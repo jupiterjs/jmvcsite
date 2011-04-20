@@ -1,4 +1,30 @@
 JmvcCommunity::Application.routes.draw do
+  
+  resources :posts
+
+# customize controller action if needed to render individual registration form for each role    
+# Example:
+# match "/editors/sign_up" => "user_registrations#new_editor", :as => :editor_signup
+
+#  'user_registrations_controller.rb' with the action #new_editor
+# def new_editor
+#   build_resource({})
+# end
+# 
+# and the registration form in 'views/user_registrations/new_editor.html.erb'
+#
+
+  #devise_for :admins, :class_name => 'Admin'
+  #as :admin do
+  #  match "/admins/sign_up" => "devise/registrations#new", :as => :admin_signup
+  #end
+  
+
+  match "bucket/:slug" => 'buckets#show', :as => :bucket
+  match "tag/:tag" => 'buckets#by_tag', :as => :tagged_with
+
+  devise_for :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -55,4 +81,7 @@ JmvcCommunity::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+  
+  root :to => "site#index"
+  
 end
