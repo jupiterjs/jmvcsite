@@ -1,8 +1,14 @@
 class PostsController < CommunityController
+  
+  skip_before_filter :authenticate_user!
+  
+  before_filter :authenticate_user!, :except => [:index, :show]
+  
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.all
+    authorize! :read, Post
+    @posts = Post.order('created_at DESC').paginate(:per_page => 15, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,8 +19,11 @@ class PostsController < CommunityController
   # GET /posts/1
   # GET /posts/1.xml
   def show
+    
     @post = Post.find(params[:id])
-
+    
+    authorize! :read, @post
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @post }
@@ -24,8 +33,9 @@ class PostsController < CommunityController
   # GET /posts/new
   # GET /posts/new.xml
   def new
+    authorize! :write, Post
     @post = current_user.posts.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @post }
@@ -35,11 +45,13 @@ class PostsController < CommunityController
   # GET /posts/1/edit
   def edit
     @post = current_user.posts.find(params[:id])
+    authorize! :edit, @post
   end
 
   # POST /posts
   # POST /posts.xml
   def create
+    authorize! :write, Post
     @post = current_user.posts.new(params[:post])
 
     respond_to do |format|
@@ -56,8 +68,8 @@ class PostsController < CommunityController
   # PUT /posts/1
   # PUT /posts/1.xml
   def update
-    @post = current_user.posts.find(params[:id])
-
+    @post = Post.find(params[:id])
+    authorize! :edit, Post
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
@@ -72,7 +84,8 @@ class PostsController < CommunityController
   # DELETE /posts/1
   # DELETE /posts/1.xml
   def destroy
-    @post = current_user.posts.find(params[:id])
+    @post = Posts.find(params[:id])
+    authorize! :destroy, @post
     @post.destroy
 
     respond_to do |format|

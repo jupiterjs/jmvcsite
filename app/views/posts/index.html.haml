@@ -1,14 +1,16 @@
-%h1 Listing posts
-%table
-  %tr
-    %th
-    %th
-    %th
-  - @posts.each do |post|
-    %tr
-      %td= link_to 'Show', post
-      %td= link_to 'Edit', edit_post_path(post)
-      %td= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete
-%br/
-= link_to 'New Post', new_post_path
+.left
+  %h1 Listing posts
+  - if @posts.blank?
+    = render :partial => "posts/no_posts"
 
+  - else
+    = page_entries_info(@posts)
+    - @posts.each do |p|
+      = render :partial => "posts/in_listing", :locals => {:post => p}
+  
+    = will_paginate @posts
+    .clear
+.right
+  = render_cell :latest_posts, :display
+  = render_cell :tag_cloud, :display
+.clear

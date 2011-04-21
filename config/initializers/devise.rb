@@ -35,6 +35,8 @@ Devise.setup do |config|
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
   config.case_insensitive_keys = [ :email ]
+  config.authentication_keys   = [ :login ]
+  config.reset_password_keys = [ :login ]
 
   # Tell if authentication through request.params is enabled. True by default.
   # config.params_authenticatable = true

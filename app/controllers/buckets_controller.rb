@@ -1,4 +1,6 @@
-class BucketsController < ApplicationController
+class BucketsController < CommunityController
+  
+  skip_before_filter :authenticate_user!
   
   def show
     @bucket = Bucket.find_by_slug params[:slug]

@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
   validates_presence_of :title
   validate :presence_of_body_or_url
   
+  validates_presence_of :tag_list
+  
   before_save :process_body
   
   def presence_of_body_or_url
@@ -14,17 +16,12 @@ class Post < ActiveRecord::Base
   end
   
   def process_body
-    b = self.body.gsub(/(\s+|\A)(https?:\/\/[\S]+)(\s+|\z)/, '<\2>')
-    processed = Kramdown::Document.new(b).to_html
-    doc = Nokogiri::HTML(processed)
-    doc.css('a').each do |link|
-      if link['href'].starts_with? 'https://gist.github' or link['href'].starts_with? 'http://gist.github'
-        link.add_previous_sibling %Q(<div class="github-gist"><script src="#{link['href']}.js"></script></div>)
-        link.remove
-      end
-    end
-    processed = doc.css('body').inner_html
-    self.processed_body = processed
+    #b = self.body.gsub(/(\s+|\A)(https?:\/\/[\S]+)(\s+|\z)/, ' <\2> ')
+    self.processed_body = Kramdown::Document.new(self.body).to_html
+  end
+  
+  def is_editable?
+    10.minutes.ago.to_i - self.created_at.to_i < 0
   end
   
 end

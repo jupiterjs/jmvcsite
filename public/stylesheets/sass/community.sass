@@ -25,13 +25,23 @@ header
 					+border-radius('5px')
 					&:hover
 						background: #2D6997
+					&#new-post
+						background: #0061A2
+						&:hover
+							background: #005791
+						
 #content
 	background: white
 	+border-radius('5px')
 	padding: 10px
-	
+	.left
+		float: left
+		width: 680px
+	.right
+		float: right
+		width: 250px
 footer
-	margin-top: 5px
+	margin: 10px 0
 	text-align: center
 	font-size: 10px
 	
@@ -98,5 +108,73 @@ form.post
 		text-align: right
 		width: 300px
 		font-size: 11px
+	.github-gist
+		margin: 10px 0
 	.gist pre
 		max-height: 200px
+	.post-url
+		margin-bottom: 10px
+		a
+			font-weight: bold
+			color: #333
+			&:hover
+				text-decoration: none
+				
+.show-post
+	h2
+		margin-bottom: 10px
+	.tags
+		font-size: 11px
+		margin-bottom: 10px
+		a
+			background: #666
+			color: white
+			padding: 3px 5px
+			+border-radius('3px')
+			text-decoration: none
+			margin-right: 5px
+			&:hover
+				background: #333
+				
+.pagination
+	margin: 10px 0
+	float: left
+	background: #ccc
+	color: #999
+	padding: 0 5px
+	+border-radius('3px')
+	font-size: 11px
+	font-weight: bold
+	em
+		font-style: normal
+		color: #333
+	a
+		color: #f30
+		text-decoration: none
+		
+.post-body
+	color: #333
+	h1, h2, h3, h4, h5, h6, p
+		margin-bottom: 5px
+	h1
+		font-size: 18px
+	h2
+		font-size: 17px
+	h3
+		font-size: 16px
+	h4
+		font-size: 15px
+	h5
+		font-size: 14px
+	h6
+		font-size: 13px
+	pre
+		width: 660px
+		white-space: pre-wrap
+		white-space: -moz-pre-wrap
+		white-space: -pre-wrap
+		white-space: -o-pre-wrap
+		word-wrap: break-word
+		code
+			width: 100%
+	

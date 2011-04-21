@@ -1,6 +1,9 @@
-%h2= @post.title
-= @post.processed_body.html_safe
+- if can? :edit, @post
+  = link_to 'Edit post', edit_post_path(@post)
+.show-post
+  %h2= @post.title
+  .tags= @post.tag_list.map{|t| link_to(t, tagged_with_path(t))}.join('').html_safe
+  .clear
+  .post-body= @post.processed_body.html_safe
+  .posted-by Posted by #{@post.user.email} #{time_ago_in_words @post.created_at} ago
 
-= link_to 'Edit', edit_post_path(@post)
-|
-= link_to 'Back', posts_path
