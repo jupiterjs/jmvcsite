@@ -6,30 +6,39 @@
     = javascript_include_tag "jquerymx-1.0.custom/jquery-1.4.3", "jquerymx-1.0.custom/jquerymx-1.0.custom"
     = csrf_meta_tag
   %body
-    .container_16
-      %header
-        = image_tag('community/logo.png')
-        %nav
-          %ul
-            %li= link_to 'All posts', posts_path
-            - Bucket.all.each do |b|
-              %li= link_to b[:name], bucket_path(b[:slug])
-            - if can? :write, Post
-              %li= link_to 'New Post', new_post_path, :id => 'new-post'
-        .logout-and-edit-info
-          - if current_user.nil?
-            =link_to 'Login', new_user_session_path
-          - else
-            =link_to 'Logout', destroy_user_session_path
-            |
-            =link_to 'Edit profile', edit_user_registration_path 
-        .clear
-      #content
-        - unless notice.blank?
-          %p.notice= notice
-        - unless alert.blank?
-          %p.alert= alert
-        =yield
-      %footer
-        JavaScriptMVC is brought to you by JupiterIT
+    #wrapper
+      .container_16
+        %header
+          = image_tag('community/logo.png')
+          .right-header
+            .logout-and-edit-info
+              - if current_user.nil?
+                =link_to 'Login', new_user_session_path
+              - else
+                Hello <b>#{current_user.username}</b>
+                =link_to 'logout', destroy_user_session_path
+                or
+                =link_to 'edit your profile', edit_user_registration_path
+            %nav
+              %ul
+                %li= link_to 'All posts', posts_path
+                - Bucket.all.each do |b|
+                  %li= link_to b[:name], bucket_path(b[:slug])
+                - if can? :write, Post
+                  %li#new-post= link_to 'New Post', new_post_path, :id => 'new-post'
+          
+          .clear
+        #content
+          .left
+            - unless notice.blank?
+              %p.notice= notice
+            - unless alert.blank?
+              %p.alert= alert
+            =yield
+          .right
+            = render_cell :latest_posts, :display
+            = render_cell :tag_cloud, :display
+          .clear
+        %footer
+          JavaScriptMVC is brought to you by JupiterIT
 

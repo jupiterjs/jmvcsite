@@ -59,3 +59,13 @@
   border-top-left-radius = !radius
   -moz-border-radius-topleft = !radius
   -webkit-border-top-left-radius = !radius
+
+//box shadows using CSS3 and browser specific methods
+
+=box-shadow(!definition)
+  box-shadow=  !definition
+  -moz-box-shadow= !definition
+  -webkit-box-shadow= !definition
+
+=box-shadow-ie(!x = 5, !y = 5, !color = "grey")
+  filter= "progid:DXImageTransform.Microsoft.DropShadow( OffX=" + !x ", OffY=" + !y ", Color=\'" + !color + "\', Positive=\'true\' )"

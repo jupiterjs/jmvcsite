@@ -2,4 +2,4 @@
   %h1 Latest posts
   %ul.latest-posts
     - @posts.each do |p|
-      %li= p.title
+      %li= link_to "#{p.title}<br /><span>posted by #{p.user.username} #{time_ago_in_words p.created_at}</span>".html_safe, p

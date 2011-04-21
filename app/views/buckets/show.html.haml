@@ -2,7 +2,7 @@
   = render :partial => "posts/no_posts", :locals => {:why => "tagged with #{@bucket[:tags].to_sentence(:two_words_connector => ' or ', :last_word_connector => ' or ')}"} 
 
 - else
-  %h1= "#{page_entries_info(@posts)} tagged with <b>#{@bucket[:tags].to_sentence(:two_words_connector => ' or ', :last_word_connector => ' or ')}</b>".html_safe
+  %h1.listing= "#{page_entries_info(@posts)} tagged with <b>#{@bucket[:tags].to_sentence(:two_words_connector => ' or ', :last_word_connector => ' or ')}</b>".html_safe
   - @posts.each do |p|
     = render :partial => "posts/in_listing", :locals => {:post => p}
   
