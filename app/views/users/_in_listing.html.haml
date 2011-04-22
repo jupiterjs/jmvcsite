@@ -11,6 +11,6 @@
       
   .post-content
     %h2.post-title= user.name
-    .post-url= link_to "Posts by user (#{user.posts.count})", by_user_posts_path(user.id)
+    .post-url= link_to "Posts by user (#{user.posts.approved.count})", by_user_posts_path(user.id)
     
   .clear
