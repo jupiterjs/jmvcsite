@@ -19,6 +19,9 @@ gem 'cells'
 gem 'gravatar-ultimate'
 gem 'cancan'
 gem 'omniauth'
+gem 'oa-openid', :require => 'omniauth/openid'
+
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

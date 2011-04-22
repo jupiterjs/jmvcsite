@@ -128,7 +128,16 @@ Feed.extend('TwitterFeed',
 });
 
 
-
+$('.sign-in-button').click(function(){
+	var klass = 'sign-in-button-active';
+	if($(this).hasClass(klass)){
+		$(this).removeClass(klass);
+		$('.sign-in-popup').hide();
+	} else {
+		$(this).addClass(klass);
+		$('.sign-in-popup').show();
+	}
+})
 
 
 

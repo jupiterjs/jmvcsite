@@ -160,6 +160,7 @@ DEPENDENCIES
   kramdown
   mysql2
   nokogiri
+  oa-openid
   omniauth
   rails (= 3.0.4)
   simple_form

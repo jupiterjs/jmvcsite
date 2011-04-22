@@ -9,14 +9,20 @@
     #wrapper
       .container_16
         %header
-          = link_to image_tag('community/logo.png'), "/"
+          = link_to image_tag('community/logo.png', :id => 'logo'), "/"
           .right-header
             .logout-and-edit-info
               - if current_user
                 Welcome, #{current_user.name} - 
                 = link_to "Sign Out", signout_path
               - else
-                = link_to "Sign in with Twitter", "/auth/twitter"
+                .sign-in-button Sign in
+                .sign-in-popup
+                  Sign in with one of following providers:
+                  .sign-in-providers
+                    = link_to image_tag('community/icons/twitter.png'), '/auth/twitter'
+                    = link_to image_tag('community/icons/facebook.png'), '/auth/facebook'
+                    = link_to image_tag('community/icons/google.png'), '/auth/open_id?openid_url=https://www.google.com/accounts/o8/id'
               
             %nav
               %ul
