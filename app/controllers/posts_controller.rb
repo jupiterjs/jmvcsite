@@ -2,7 +2,7 @@ class PostsController < CommunityController
   
   skip_before_filter :authenticate_user!
   
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index, :show, :tag, :user, :bucket]
   
   # GET /posts
   # GET /posts.xml
