@@ -2,8 +2,8 @@
 %html
   %head
     %title JavaScriptMVC Community
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     = stylesheet_link_tag 'reset', '960', 'text', 'museoslab', 'community'
-    = javascript_include_tag "jquerymx-1.0.custom/jquery-1.4.3", "jquerymx-1.0.custom/jquerymx-1.0.custom"
     = csrf_meta_tag
   %body
     #wrapper
@@ -12,20 +12,20 @@
           = image_tag('community/logo.png')
           .right-header
             .logout-and-edit-info
-              - if current_user.nil?
-                =link_to 'Login', new_user_session_path
+              - if current_user
+                Welcome, #{current_user.name} - 
+                = link_to "Sign Out", signout_path
               - else
-                Hello <b>#{current_user.username}</b>
-                =link_to 'logout', destroy_user_session_path
-                or
-                =link_to 'edit your profile', edit_user_registration_path
+                = link_to "Sign in with Twitter", "/auth/twitter"
+              
             %nav
               %ul
                 %li= link_to 'All posts', posts_path
                 - Bucket.all.each do |b|
-                  %li= link_to b[:name], bucket_path(b[:slug])
+                  %li= link_to b[:name], in_bucket_posts_path(b[:slug])
                 - if can? :write, Post
                   %li#new-post= link_to 'New Post', new_post_path, :id => 'new-post'
+                %li= link_to 'Users', users_path
           
           .clear
         #content
@@ -38,7 +38,14 @@
           .right
             = render_cell :latest_posts, :display
             = render_cell :tag_cloud, :display
+            .sidebar-box
+              %h1 Tweets on JavaScriptMVC
+              #twitter-feed
+                %ul.tweets
+                  - 5.times do
+                    %li=%Q(@yql thx for the heads up @javascriptmvc I tried with "select * from html where url=..." it explains why it worked for me ;\)<br /><span>posted by guillaume86 10 minutes ago).html_safe
           .clear
         %footer
           <a href="http://javascriptmvc.com">JavaScriptMVC</a> is brought to you by <a href="http://jupiterit.com">Jupiter</a>
+    = javascript_include_tag "jquerymx-1.0.custom/jquery-1.4.3", "jquerymx-1.0.custom/jquerymx-1.0.custom", "application"
 

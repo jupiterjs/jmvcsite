@@ -6,7 +6,11 @@ class Ability
     if user.is_admin?
       can :manage, :all
     else
-      can :read, :all
+      #can :read, :all
+      can :read, Post, :is_approved => true
+      can :read, Post, :user_id => user.id
+      
+      
       can :write, Post unless user.new_record?
       can :edit, Post do |post|
         post.user_id == user.id && post.is_editable?

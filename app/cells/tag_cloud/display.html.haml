@@ -1,5 +1,6 @@
-.sidebar-box
-  %h1 Tag cloud
-  .tag-cloud
-    - tag_cloud @tags, %w(tag1 tag2 tag3 tag4) do |tag, css_class|
-      = link_to tag.name, tagged_with_path(tag.name), :class => css_class
+- if @tags.length > 0
+  .sidebar-box
+    %h1 Tag cloud
+    .tag-cloud
+      - tag_cloud @tags, %w(tag1 tag2 tag3 tag4) do |tag, css_class|
+        = link_to tag.name, tagged_posts_path(tag.name), :class => css_class

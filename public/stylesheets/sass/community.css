@@ -7,12 +7,6 @@ body {
   background-repeat: repeat-x;
   padding-top: 20px; }
 
-a {
-  color: #ff3300;
-  text-decoration: none; }
-  a:hover {
-    text-decoration: underline; }
-
 header {
   padding-bottom: 10px;
   margin-bottom: 10px; }
@@ -26,7 +20,10 @@ header {
       text-align: right;
       margin-top: 10px;
       font-size: 11px;
-      color: #444444; }
+      color: white;
+      float: right;
+      background: #969d29;
+      padding: 3px 5px; }
       header .right-header .logout-and-edit-info a {
         color: black;
         text-decoration: none; }
@@ -107,43 +104,9 @@ header {
 #content h1 {
   font-family: MuseoSlab500;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   text-shadow: 0px 1px white;
   color: #222222; }
-#content .show-post {
-  margin: 20px 10px 0 10px; }
-  #content .show-post .edit-post {
-    float: right;
-    color: #ff3300;
-    text-decoration: none;
-    font-size: 11px;
-    display: block;
-    margin-top: 7px; }
-    #content .show-post .edit-post:hover {
-      text-decoration: underline; }
-  #content .show-post h1 {
-    margin-bottom: 0;
-    float: left;
-    font-size: 24px;
-    margin-right: 100px; }
-  #content .show-post .posted-by {
-    font-size: 11px;
-    color: #666666; }
-    #content .show-post .posted-by b {
-      color: #333333; }
-  #content .show-post .tags {
-    font-size: 11px; }
-    #content .show-post .tags a {
-      background: #969d29;
-      color: white;
-      padding: 2px 4px;
-      border-radius: 3px;
-      -moz-border-radius: 3px;
-      -webkit-border-radius: 3px;
-      text-decoration: none;
-      margin-right: 5px; }
-      #content .show-post .tags a:hover {
-        background: #333333; }
 
 footer {
   margin: 25px 0;
@@ -229,40 +192,36 @@ form {
     margin-bottom: 5px;
     font-size: 11px;
     font-weight: bold; }
-  form .checkbox input, form .checkbox label {
-    display: inline; }
 
-.post-in-listing, .user-in-listing {
+.post-in-listing {
   padding: 10px 5px;
   border-bottom: 1px solid #cccccc;
   margin: 0px 5px; }
-  .post-in-listing .gravatar, .user-in-listing .gravatar {
+  .post-in-listing .gravatar {
     float: left;
     display: block; }
-  .post-in-listing .post-content, .user-in-listing .post-content {
+  .post-in-listing .post-content {
     float: left;
     margin-left: 10px; }
-  .post-in-listing p, .user-in-listing p {
+  .post-in-listing p {
     margin: 0; }
-  .post-in-listing h2, .user-in-listing h2 {
+  .post-in-listing h2 {
     font-size: 16px;
     margin: 2px 0 0 0;
     font-family: MuseoSlab500;
     font-weight: bold; }
-    .post-in-listing h2 a, .user-in-listing h2 a {
+    .post-in-listing h2 a {
       color: #363636;
       text-decoration: none;
       display: block; }
-      .post-in-listing h2 a:hover, .user-in-listing h2 a:hover {
+      .post-in-listing h2 a:hover {
         color: #ff3300; }
-  .post-in-listing .post-body, .user-in-listing .post-body {
-    margin-bottom: 20px;
-    margin-top: 0;
-    border: none; }
-  .post-in-listing .tags, .user-in-listing .tags {
+  .post-in-listing .post-body {
+    margin-bottom: 10px; }
+  .post-in-listing .tags {
     font-size: 11px;
     margin-top: 5px; }
-    .post-in-listing .tags a, .user-in-listing .tags a {
+    .post-in-listing .tags a {
       background: #969d29;
       color: white;
       padding: 2px 4px;
@@ -271,59 +230,59 @@ form {
       -webkit-border-radius: 3px;
       text-decoration: none;
       margin-right: 5px; }
-      .post-in-listing .tags a:hover, .user-in-listing .tags a:hover {
+      .post-in-listing .tags a:hover {
         background: #333333; }
-  .post-in-listing .posted-by, .user-in-listing .posted-by {
+  .post-in-listing .posted-by {
     font-size: 11px;
     color: #444444; }
-    .post-in-listing .posted-by b, .user-in-listing .posted-by b {
+    .post-in-listing .posted-by b {
       color: #222222; }
-  .post-in-listing .github-gist, .user-in-listing .github-gist {
+  .post-in-listing .github-gist {
     margin: 10px 0; }
-  .post-in-listing .gist pre, .user-in-listing .gist pre {
+  .post-in-listing .gist pre {
     max-height: 200px; }
-  .post-in-listing .post-url, .user-in-listing .post-url {
+  .post-in-listing .post-url {
     margin-bottom: 10px; }
-    .post-in-listing .post-url a, .user-in-listing .post-url a {
+    .post-in-listing .post-url a {
       font-weight: bold;
       color: #333333; }
-      .post-in-listing .post-url a:hover, .user-in-listing .post-url a:hover {
-        text-decoration: underline; }
+      .post-in-listing .post-url a:hover {
+        text-decoration: none; }
 
-.approval {
-  color: #333333;
-  background: #cccccc;
-  padding: 3px 5px;
-  margin-bottom: 10px;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px; }
-  .approval .action {
+#content .show-post {
+  margin: 20px 10px 0 10px; }
+  #content .show-post .edit-post {
     float: right;
-    background: white;
-    color: black;
-    margin-left: 5px;
-    font-size: 10px;
-    font-weight: bold;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    padding: 2px 5px;
-    cursor: pointer; }
-    .approval .action:hover {
-      background: black;
-      color: white; }
-
-.post-not-approved {
-  border: 1px solid #ff3300;
-  margin: 10px 5px 5px;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px; }
-  .post-not-approved .approval {
-    color: white;
-    background: #ff3300;
-    margin: -10px -5px 10px; }
+    color: #ff3300;
+    text-decoration: none;
+    font-size: 11px;
+    display: block;
+    margin-top: 7px; }
+    #content .show-post .edit-post:hover {
+      text-decoration: underline; }
+  #content .show-post h1 {
+    margin-bottom: 0;
+    float: left;
+    font-size: 24px;
+    margin-right: 100px; }
+  #content .show-post .posted-by {
+    font-size: 11px;
+    color: #666666; }
+    #content .show-post .posted-by b {
+      color: #333333; }
+  #content .show-post .tags {
+    font-size: 11px; }
+    #content .show-post .tags a {
+      background: #969d29;
+      color: white;
+      padding: 2px 4px;
+      border-radius: 3px;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      text-decoration: none;
+      margin-right: 5px; }
+      #content .show-post .tags a:hover {
+        background: #333333; }
 
 .pagination {
   margin: 20px 0 0;
@@ -378,43 +337,28 @@ form {
       text-decoration: underline; }
 
 .sidebar-box {
-  margin-bottom: 20px;
-  color: #444444; }
-  .sidebar-box span {
-    font-size: 11px; }
+  margin-bottom: 20px; }
   .sidebar-box a {
     color: #444444;
     text-decoration: none; }
+    .sidebar-box a span {
+      font-size: 11px; }
     .sidebar-box a:hover {
       color: #ff3300; }
   .sidebar-box h1 {
     margin-bottom: 0px; }
 
-ul.latest-posts, ul.tweets {
+ul.latest-posts {
   list-style: none;
   margin: 0;
   padding: 0; }
-  ul.latest-posts li, ul.tweets li {
+  ul.latest-posts li {
     margin: 0;
-    border-bottom: 1px dotted black;
-    line-height: 14px;
-    padding: 5px 0;
-    font-size: 13px; }
-    ul.latest-posts li a, ul.tweets li a {
-      display: block; }
-
-ul.tweets li {
-  font-size: 11px; }
-  ul.tweets li a {
-    color: #ff3300;
-    display: inline; }
-    ul.tweets li a:hover {
-      text-decoration: underline; }
-ul.tweets span {
-  font-size: 10px;
-  margin: 3px 0;
-  display: block;
-  color: #666666; }
+    border-bottom: 1px dotted black; }
+    ul.latest-posts li a {
+      display: block;
+      line-height: 14px;
+      padding: 5px 0; }
 
 .no-posts {
   color: red;
@@ -457,6 +401,3 @@ ul.tweets span {
     padding: 0; }
     #error_explanation ul li {
       margin: 0 0 0 15px; }
-
-.devise-links {
-  margin-left: 10px; }

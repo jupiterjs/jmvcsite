@@ -1,0 +1,9 @@
+- if @users.blank?
+  = render :partial => "users/no_users"
+
+- else
+  %h1.listing= page_entries_info(@users)
+  - @users.each do |u|
+    = render :partial => "users/in_listing", :locals => {:user => u}
+  = will_paginate @users
+  .clear

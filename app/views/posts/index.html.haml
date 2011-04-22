@@ -1,8 +1,8 @@
 - if @posts.blank?
-  = render :partial => "posts/no_posts"
+  = render :partial => "posts/no_posts", :locals => {:why => @no_posts}
 
 - else
-  %h1.listing= page_entries_info(@posts)
+  %h1.listing= "#{page_entries_info(@posts)}#{@has_posts.to_s}".html_safe
   - @posts.each do |p|
     = render :partial => "posts/in_listing", :locals => {:post => p}
   = will_paginate @posts

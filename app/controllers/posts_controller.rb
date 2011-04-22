@@ -8,12 +8,39 @@ class PostsController < CommunityController
   # GET /posts.xml
   def index
     authorize! :read, Post
-    @posts = Post.order('created_at DESC').paginate(:per_page => 15, :page => params[:page])
+    @posts = Post.accessible_by(current_ability).order('created_at DESC').paginate(:per_page => 15, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
     end
+  end
+
+  def bucket
+    authorize! :read, Post
+    @bucket = Bucket.find_by_slug params[:bucket]
+    raise ActiveRecord::RecordNotFound if @bucket.nil?
+    @posts = get_posts_from_bucket(@bucket)
+    render :action => 'index'
+  end
+  
+  def tag
+    authorize! :read, Post
+    @bucket = {:name => "Tagged with #{params[:tag]}", :tags => [params[:tag]]}
+    @posts = get_posts_from_bucket(@bucket)
+    render :action => 'index'
+  end
+  
+  def user
+    authorize! :read, Post
+    user = User.find params['user_id']
+    @posts = user.posts
+                 .accessible_by(current_ability)
+                 .order('created_at DESC')
+                 .paginate(:per_page => 15, :page => params[:page])
+    @has_posts = " from #{user.name}"
+    @no_posts = " from #{user.name}"
+    render :action => 'index'
   end
 
   # GET /posts/1
@@ -27,6 +54,7 @@ class PostsController < CommunityController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @post }
+      format.json { render :json => @post }
     end
   end
 
@@ -71,12 +99,19 @@ class PostsController < CommunityController
     @post = Post.find(params[:id])
     authorize! :edit, Post
     respond_to do |format|
-      if @post.update_attributes(params[:post])
+      is_approved = params[:post].delete(:is_approved)
+      if current_user.is_admin? and !is_approved.nil?
+        @post.is_approved = is_approved
+      end
+      
+      if @post.update_attributes(params[:post]) 
         format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
         format.xml  { head :ok }
+        format.json { render :json => @post}
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
+        format.json { render :json => @post.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -84,7 +119,7 @@ class PostsController < CommunityController
   # DELETE /posts/1
   # DELETE /posts/1.xml
   def destroy
-    @post = Posts.find(params[:id])
+    @post = Post.find(params[:id])
     authorize! :destroy, @post
     @post.destroy
 
@@ -93,4 +128,12 @@ class PostsController < CommunityController
       format.xml  { head :ok }
     end
   end
+  
+  protected
+    def get_posts_from_bucket(bucket)
+      @no_posts = "tagged with #{bucket[:tags].to_sentence(:two_words_connector => ' or ', :last_word_connector => ' or ')}"
+      @has_posts = " tagged with <b>#{@bucket[:tags].to_sentence(:two_words_connector => ' or ', :last_word_connector => ' or ')}</b>"
+      Post.accessible_by(current_ability).tagged_with(bucket[:tags], :any => true).paginate(:per_page => 15, :page => params[:page], :order => 'created_at DESC')
+    end
+  
 end

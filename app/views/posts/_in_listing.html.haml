@@ -1,10 +1,18 @@
-.post-in-listing
-  = image_tag Gravatar.new(post.user.email).image_url(:size => 40), :class => 'gravatar'
+.post-in-listing{:class => ('post-not-approved' unless post.is_approved?),:data => {:'post-id' => post.cached_slug}}
+  - if !current_user.nil? and current_user.is_admin? or (current_user == post.user and !post.is_approved?)
+    .approval
+      %span= post.is_approved?? "This post is already approved." : "This post is not approved by administration yet."
+      - if !current_user.nil? and current_user.is_admin?
+        .action.delete Delete
+        .action.approve= post.is_approved?? "Disapprove" : "Approve"
+        .action.expand Expand
+      
+  -#image_tag Gravatar.new(post.user.email).image_url(:size => 40), :class => 'gravatar'
   .post-content
-    .posted-by Posted by <b>#{post.user.username}</b> #{time_ago_in_words post.created_at} ago
+    .posted-by Posted by <b>#{post.user.name}</b> #{time_ago_in_words post.created_at} ago
     %h2.post-title= link_to post.title, post
     - unless post.url.blank?
       .post-url= link_to post.url, post.url
-    .tags= post.tag_list.map{|t| link_to(t, tagged_with_path(t))}.join('').html_safe
+    .tags= post.tag_list.map{|t| link_to(t, tagged_posts_path(t))}.join('').html_safe
     
   .clear

@@ -1,0 +1,14 @@
+.user-in-listing
+  - if !current_user.nil? and current_user.is_admin?
+    .approval
+      - if user.is_admin?
+        %span This user is an admin
+      - if !current_user.nil? and current_user.is_admin?
+        .action.make-admin= user.is_admin?? "Disable admin status" : "Enable admin status"
+      .clear
+      
+  .post-content
+    %h2.post-title= user.name
+    .post-url= link_to "Posts by user (#{user.posts.count})", by_user_posts_path(user.id)
+    
+  .clear

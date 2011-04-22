@@ -6,7 +6,7 @@ gem 'rails', '3.0.4'
 
 
 gem 'mysql2'
-gem 'devise'
+#gem 'devise'
 gem 'simple_form'
 gem 'acts-as-taggable-on'
 gem 'haml'
@@ -18,6 +18,7 @@ gem 'will_paginate'
 gem 'cells'
 gem 'gravatar-ultimate'
 gem 'cancan'
+gem 'omniauth'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -1,7 +1,15 @@
 JmvcCommunity::Application.routes.draw do
   
-  resources :posts
-
+  resources :posts do
+    collection do
+      get 'tagged/:tag', :as => :tagged, :action => 'tag'
+      get 'in-bucket/:bucket', :action => 'bucket', :as => :in_bucket
+      get 'user/:user_id', :action => 'user', :as => :by_user
+    end
+  end
+  
+  resources :users
+  
 # customize controller action if needed to render individual registration form for each role    
 # Example:
 # match "/editors/sign_up" => "user_registrations#new_editor", :as => :editor_signup
@@ -20,10 +28,11 @@ JmvcCommunity::Application.routes.draw do
   #end
   
 
-  match "bucket/:slug" => 'buckets#show', :as => :bucket
-  match "tag/:tag" => 'buckets#by_tag', :as => :tagged_with
+  #match "bucket/:slug" => 'buckets#show', :as => :bucket
+  #match "tag/:tag" => 'buckets#by_tag', :as => :tagged_with
 
-  devise_for :users
+  match "/auth/:provider/callback" => "sessions#create"
+  match "/signout" => "sessions#destroy", :as => :signout
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

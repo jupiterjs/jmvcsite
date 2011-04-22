@@ -1,10 +1,10 @@
 .show-post
-  .posted-by Posted by <b>#{@post.user.username}</b> #{time_ago_in_words @post.created_at} ago
+  .posted-by Posted by <b>#{@post.user.name}</b> #{time_ago_in_words @post.created_at} ago
   - if can? :edit, @post
     = link_to 'Edit post', edit_post_path(@post), :class => 'edit-post'
   %h1= @post.title
   .clear
-  .tags= @post.tag_list.map{|t| link_to(t, tagged_with_path(t))}.join('').html_safe
+  .tags= @post.tag_list.map{|t| link_to(t, tagged_posts_path(t))}.join('').html_safe
   .clear
   - unless @post.processed_body.blank?
     .post-body= @post.processed_body.html_safe
