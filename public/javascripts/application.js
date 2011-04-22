@@ -1,14 +1,14 @@
 $.Controller('PostAdministration', {}, {
 	'.expand click' : function(){
-		$.getJSON('posts/' + this.element.data('post-id') + '.json', this.callback('expandPost'));
+		$.getJSON('/posts/' + this.element.data('post-id') + '.json', this.callback('expandPost'));
 	},
 	'.approve click' : function(){
 		var approval = this.element.hasClass('post-not-approved');
-		$.post('posts/' + this.element.data('post-id') + '.json', withCsrf({_method: 'PUT', post: {is_approved: approval}}), this.callback('approvePost'));
+		$.post('/posts/' + this.element.data('post-id') + '.json', withCsrf({_method: 'PUT', post: {is_approved: approval}}), this.callback('approvePost'));
 	},
 	'.delete click' : function(){
 		if(confirm('Are you sure?')){
-			$.post('posts/' + this.element.data('post-id'), withCsrf({_method: 'DELETE'}), this.callback('removePost'))
+			$.post('/posts/' + this.element.data('post-id'), withCsrf({_method: 'DELETE'}), this.callback('removePost'))
 		}
 	},
 	approvePost : function(data){
@@ -41,6 +41,27 @@ $.Controller('PostAdministration', {}, {
 		
 	}
 })
+
+$.Controller('UserAdministration', {}, {
+	'.make-admin click' : function(){
+		var admin = !this.element.hasClass('is-admin');
+		$.post('/users/' + this.element.data('user-id') + '.json', withCsrf({_method: 'PUT', user: {is_admin: admin}}), this.callback('makeAdmin'));
+	},
+	makeAdmin : function(data){
+		if(data.user.is_admin){
+			this.element.addClass('is-admin');
+			this.element.find('span').text('This user is an admin.');
+			this.element.find('.make-admin').text('Disable admin status');
+		} else {
+			this.element.removeClass('is-admin');
+			this.element.find('span').text('');
+			this.element.find('.make-admin').text('Enable admin status');
+		}
+		
+	}
+})
+
+
 
 jQuery.Controller.extend('Feed',
 /* @Static */
@@ -115,6 +136,6 @@ function withCsrf(h){
 	h[$('meta[name="csrf-param"]').attr('content')] = $('meta[name="csrf-token"]').attr('content');
 	return h;
 }
-
+$('.user-in-listing').user_administration();
 $('.post-in-listing').post_administration();
 $('#twitter-feed').twitter_feed();

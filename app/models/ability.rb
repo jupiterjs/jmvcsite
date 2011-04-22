@@ -7,6 +7,7 @@ class Ability
       can :manage, :all
     else
       #can :read, :all
+      can :read, User
       can :read, Post, :is_approved => true
       can :read, Post, :user_id => user.id
       

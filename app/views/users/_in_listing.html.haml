@@ -1,8 +1,10 @@
-.user-in-listing
+.user-in-listing{:data => {'user-id' => user.id}, :class => ((user.is_admin? and current_user.is_admin) ? 'is-admin' : "")}
   - if !current_user.nil? and current_user.is_admin?
     .approval
       - if user.is_admin?
         %span This user is an admin
+      - else
+        %span
       - if !current_user.nil? and current_user.is_admin?
         .action.make-admin= user.is_admin?? "Disable admin status" : "Enable admin status"
       .clear

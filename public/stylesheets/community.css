@@ -325,6 +325,10 @@ form {
     background: #ff3300;
     margin: -10px -5px 10px; }
 
+.is-admin .approval {
+  color: white;
+  background: #969d29; }
+
 .pagination {
   margin: 20px 0 0;
   float: left;
