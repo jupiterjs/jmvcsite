@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :user
   validates_presence_of :tag_list
   
-  before_create :process_body
+  before_save :process_body
   before_save :set_is_approved
   
   scope :approved, where(:is_approved => true) 
