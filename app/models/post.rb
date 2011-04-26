@@ -29,7 +29,7 @@ class Post < ActiveRecord::Base
   
   def process_body
     #b = self.body.gsub(/(\s+|\A)(https?:\/\/[\S]+)(\s+|\z)/, ' <\2> ')
-    self.processed_body = Kramdown::Document.new(self.body).to_html
+    self.processed_body = RDiscount.new(self.body.strip).to_html
   end
   
   def is_editable?

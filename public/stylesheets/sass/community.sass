@@ -394,7 +394,7 @@ form
 	h6
 		font-size: 13px
 	pre
-		width: 660px
+		width: 645px
 		white-space: pre-wrap
 		white-space: -moz-pre-wrap
 		white-space: -pre-wrap
@@ -402,6 +402,7 @@ form
 		word-wrap: break-word
 		code
 			width: 100%
+			margin: 0
 	a
 		color: #f30
 		text-decoration: none
@@ -491,5 +492,50 @@ ul.tweets
 .devise-links
 	margin-left: 10px
 
+.preview-post-wrapper
+	margin-top: -6px
+	margin-bottom: 15px
+	.preview-post
+		font-family: MuseoSlab500
+		font-size: 13px
+		display: block
+		color: white
+		background: 
+			image: url(../images/community/menu/button.png)
+			position: top
+		border: 1px solid #60793e
+		height: 23px
+		line-height: 24px
+		text-decoration: none
+		padding: 0 10px
+		+box-shadow('0px 1px white')
+		+border-radius('5px')
+		text-shadow: 0px 1px #333
+		margin-bottom: 1px
+		cursor: pointer
+		float: left
+		margin-bottom: 1px
+		&:hover
+			background-position: 50% 50%
+		&:active
+			margin-top: 1px
+			margin-bottom: 0
+			background-position: 50% bottom
+			+box-shadow('0px -1px #60793e')
+	.post-body
+		border: 1px solid #60793e
+		margin: -2px 0 0
+		padding: 5px 10px
+		background: #f0f0f0
+		display: none
+		+box-shadow('0px 1px white')
+		pre
+			width: 625px
 		
+.has-preview-post
+	.preview-post
+		+box-shadow('none')
+		+border-radius-bottom('0px')
+	.post-body
+		display: block
 

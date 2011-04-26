@@ -7,7 +7,8 @@
   .tags= @post.tag_list.map{|t| link_to(t, tagged_posts_path(t))}.join('').html_safe
   .clear
   - unless @post.processed_body.blank?
-    .post-body= @post.processed_body.html_safe
+    - preserve do
+      .post-body=@post.processed_body.html_safe
   - unless @post.url.blank?
     .post-body= link_to @post.url, @post.url
   

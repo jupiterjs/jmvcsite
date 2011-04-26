@@ -423,14 +423,15 @@ form {
   .post-body h6 {
     font-size: 13px; }
   .post-body pre {
-    width: 660px;
+    width: 645px;
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
     white-space: -pre-wrap;
     white-space: -o-pre-wrap;
     word-wrap: break-word; }
     .post-body pre code {
-      width: 100%; }
+      width: 100%;
+      margin: 0; }
   .post-body a {
     color: #ff3300;
     text-decoration: none; }
@@ -521,3 +522,63 @@ ul.tweets span {
 
 .devise-links {
   margin-left: 10px; }
+
+.preview-post-wrapper {
+  margin-top: -6px;
+  margin-bottom: 15px; }
+  .preview-post-wrapper .preview-post {
+    font-family: MuseoSlab500;
+    font-size: 13px;
+    display: block;
+    color: white;
+    background-image: url(../images/community/menu/button.png);
+    background-position: top;
+    border: 1px solid #60793e;
+    height: 23px;
+    line-height: 24px;
+    text-decoration: none;
+    padding: 0 10px;
+    box-shadow: 0px 1px white;
+    -moz-box-shadow: 0px 1px white;
+    -webkit-box-shadow: 0px 1px white;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    text-shadow: 0px 1px #333333;
+    margin-bottom: 1px;
+    cursor: pointer;
+    float: left;
+    margin-bottom: 1px; }
+    .preview-post-wrapper .preview-post:hover {
+      background-position: 50% 50%; }
+    .preview-post-wrapper .preview-post:active {
+      margin-top: 1px;
+      margin-bottom: 0;
+      background-position: 50% bottom;
+      box-shadow: 0px -1px #60793e;
+      -moz-box-shadow: 0px -1px #60793e;
+      -webkit-box-shadow: 0px -1px #60793e; }
+  .preview-post-wrapper .post-body {
+    border: 1px solid #60793e;
+    margin: -2px 0 0;
+    padding: 5px 10px;
+    background: #f0f0f0;
+    display: none;
+    box-shadow: 0px 1px white;
+    -moz-box-shadow: 0px 1px white;
+    -webkit-box-shadow: 0px 1px white; }
+    .preview-post-wrapper .post-body pre {
+      width: 625px; }
+
+.has-preview-post .preview-post {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  border-bottom-right-radius: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  -moz-border-radius-bottomleft: 0px;
+  -webkit-border-bottom-left-radius: 0px; }
+.has-preview-post .post-body {
+  display: block; }
