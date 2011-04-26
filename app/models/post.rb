@@ -17,6 +17,28 @@ class Post < ActiveRecord::Base
   
   scope :approved, where(:is_approved => true) 
   
+  def body=(html)
+    write_attribute(:body, Sanitize.clean(html))
+  end
+  
+  def title=(html)
+    write_attribute(:title, Sanitize.clean(html))
+  end
+  
+  def url=(html)
+    write_attribute(:url, Sanitize.clean(html))
+  end
+  
+  def tag_list_with_sanitize=(tag_list)
+    tag_list_without_sanitize = Sanitize.clean(tag_list)
+  end
+  
+  alias_method_chain :tag_list=, :sanitize
+  
+
+  
+  
+  
   def set_is_approved
     if self.user.is_admin?
       self.is_approved = true
