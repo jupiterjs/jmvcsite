@@ -158,14 +158,5 @@ $('.user-in-listing').user_administration();
 $('.post-in-listing').post_administration();
 $('#twitter-feed').twitter_feed();
 
-$('pre').each(function(i, el){
-	var html = $(el).html().split("\n").slice(0,-1);
-	var clean = [html.shift()]
-	for(var i = 0; i < html.length; i++){
-		clean.push(html[i].substr(2))
-	}
-	console.log(clean)
-	$(el).html(clean.join("\n")+"</code>").addClass('language-javascript');
-	
-})
+$('pre').addClass('language-javascript');
 hljs.initHighlightingOnLoad();
