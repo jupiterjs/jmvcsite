@@ -583,12 +583,12 @@ ul.tweets span {
 .has-preview-post .post-body {
   display: block; }
 
-#disqus-thread {
+#disqus_thread {
   font-size: 10px;
   border-top: 1px dotted #333333;
   margin: 10px 10px 0;
   padding-top: 10px; }
-  #disqus-thread #dsq-content h3 {
+  #disqus_thread #dsq-content h3 {
     font-size: 16px;
     font-family: MuseoSlab500;
     color: #333333;
