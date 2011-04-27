@@ -52,4 +52,15 @@
         %footer
           <a href="http://javascriptmvc.com">JavaScriptMVC</a> is brought to you by <a href="http://jupiterit.com">Jupiter</a>
     = javascript_include_tag "jquerymx-1.0.custom/jquery-1.4.3", "jquerymx-1.0.custom/jquerymx-1.0.custom", "showdown", 'highlight/highlight', 'highlight/languages/javascript', "application"
+    :erb
+      <script type="text/javascript">
+      		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      		try{
+      		var pageTracker = _gat._getTracker("UA-2302003-4");
+      		pageTracker._trackPageview();
+      		} catch(err) {}
+      </script>
 
