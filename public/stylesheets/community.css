@@ -408,6 +408,9 @@ form {
   margin-top: 10px;
   padding-top: 10px;
   border-top: 1px dotted #333333; }
+  .post-body img {
+    margin-bottom: 10px;
+    max-width: 660px; }
   .post-body h1, .post-body h2, .post-body h3, .post-body h4, .post-body h5, .post-body h6, .post-body p {
     margin-bottom: 5px; }
   .post-body h1 {
