@@ -72,7 +72,7 @@ class PostsController < CommunityController
 
   # GET /posts/1/edit
   def edit
-    @post = current_user.posts.find(params[:id])
+    @post = Post.find(params[:id])
     authorize! :edit, @post
   end
 
