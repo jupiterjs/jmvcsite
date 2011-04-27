@@ -31,6 +31,7 @@
                   %li= link_to b[:name], in_bucket_posts_path(b[:slug])
                 - if can? :write, Post
                   %li#new-post= link_to 'New Post', new_post_path, :id => 'new-post'
+                %li= link_to 'Articles', articles_path
                 %li= link_to 'Users', users_path
           
           .clear

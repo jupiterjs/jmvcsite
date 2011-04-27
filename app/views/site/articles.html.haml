@@ -1,0 +1,12 @@
+%h1.listing Articles on JavaScriptMVC
+.post-in-listing
+  .post-content
+    .post-body
+      %p This is a list of JupiterJS articles on JavaScriptMVC plugins.
+  .clear
+
+- @articles.each do |p|
+  .post-in-listing
+    .post-content
+      %h2.post-title= link_to(p[1], p[0])
+    .clear
