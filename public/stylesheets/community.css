@@ -175,14 +175,13 @@ header {
     text-decoration: none;
     font-size: 11px;
     display: block;
-    margin-top: 7px; }
+    margin-top: -15px; }
     #content .show-post .edit-post:hover {
       text-decoration: underline; }
   #content .show-post h1 {
-    margin-bottom: 0;
-    float: left;
+    margin: 10px 0 15px;
     font-size: 24px;
-    margin-right: 100px; }
+    line-height: 26px; }
   #content .show-post .posted-by {
     font-size: 11px;
     color: #666666; }
@@ -306,7 +305,7 @@ form {
     font-family: MuseoSlab500;
     font-weight: bold; }
     .post-in-listing h2 a, .user-in-listing h2 a {
-      color: #2b3f4e;
+      color: #335875;
       text-decoration: none;
       display: block;
       text-shadow: 0px 1px white; }
