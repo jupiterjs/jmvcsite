@@ -150,6 +150,7 @@ $('.preview-post').click(function(){
 	}
 })
 
+
 function withCsrf(h){
 	h[$('meta[name="csrf-param"]').attr('content')] = $('meta[name="csrf-token"]').attr('content');
 	return h;
