@@ -17,10 +17,6 @@ class Post < ActiveRecord::Base
   
   scope :approved, where(:is_approved => true) 
   
-  def body=(html)
-    write_attribute(:body, Sanitize.clean(html))
-  end
-  
   def title=(html)
     write_attribute(:title, Sanitize.clean(html))
   end
@@ -29,15 +25,12 @@ class Post < ActiveRecord::Base
     write_attribute(:url, Sanitize.clean(html))
   end
   
-  def tag_list_with_sanitize=(tag_list)
-    tag_list_without_sanitize = Sanitize.clean(tag_list)
+  def tag_list_with_sanitize=(raw_tags)
+    clean_tags = Sanitize.clean(raw_tags)
+    self.tag_list_without_sanitize = clean_tags
   end
   
   alias_method_chain :tag_list=, :sanitize
-  
-
-  
-  
   
   def set_is_approved
     if self.user.is_admin?
@@ -51,7 +44,11 @@ class Post < ActiveRecord::Base
   
   def process_body
     #b = self.body.gsub(/(\s+|\A)(https?:\/\/[\S]+)(\s+|\z)/, ' <\2> ')
-    self.processed_body = RDiscount.new(self.body.strip).to_html
+    self.processed_body = Sanitize.clean(
+                            RDiscount.new(self.body.strip).to_html, 
+                            :elements => ['a', 'span', 'img', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'code', 'b', 'i', 'strong', 'em', 'ul', 'li', 'ol', 'hr', 'br'],
+                            :attributes => {'a' => ['href', 'title'], 'img' => ['src', 'title']},
+                            :protocols => {'a' => {'href' => ['http', 'https', 'mailto']}})
   end
   
   def is_editable?
