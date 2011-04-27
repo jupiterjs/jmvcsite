@@ -297,28 +297,29 @@ form {
     float: left;
     display: block; }
   .post-in-listing .post-content, .user-in-listing .post-content {
-    float: left;
     margin-left: 10px; }
   .post-in-listing p, .user-in-listing p {
     margin: 0; }
   .post-in-listing h2, .user-in-listing h2 {
     font-size: 16px;
-    margin: 2px 0 0 0;
+    margin: 0px 0 0 0;
     font-family: MuseoSlab500;
     font-weight: bold; }
     .post-in-listing h2 a, .user-in-listing h2 a {
-      color: #363636;
+      color: #2b3f4e;
       text-decoration: none;
-      display: block; }
+      display: block;
+      text-shadow: 0px 1px white; }
       .post-in-listing h2 a:hover, .user-in-listing h2 a:hover {
         color: #ff3300; }
   .post-in-listing .post-body, .user-in-listing .post-body {
-    margin-bottom: 20px;
-    margin-top: 0;
+    margin-bottom: 5px;
+    margin-top: -10px;
     border: none; }
   .post-in-listing .tags, .user-in-listing .tags {
     font-size: 11px;
-    margin-top: 5px; }
+    margin-top: 3px;
+    float: left; }
     .post-in-listing .tags a, .user-in-listing .tags a {
       background: #969d29;
       color: white;
@@ -331,19 +332,23 @@ form {
       .post-in-listing .tags a:hover, .user-in-listing .tags a:hover {
         background: #333333; }
   .post-in-listing .posted-by, .user-in-listing .posted-by {
+    float: right;
     font-size: 11px;
-    color: #444444; }
+    color: #777777;
+    text-align: right;
+    margin: 7px 0 -7px; }
     .post-in-listing .posted-by b, .user-in-listing .posted-by b {
-      color: #222222; }
+      color: #666666; }
   .post-in-listing .github-gist, .user-in-listing .github-gist {
     margin: 10px 0; }
   .post-in-listing .gist pre, .user-in-listing .gist pre {
     max-height: 200px; }
   .post-in-listing .post-url, .user-in-listing .post-url {
-    margin-bottom: 10px; }
+    margin-bottom: 5px; }
     .post-in-listing .post-url a, .user-in-listing .post-url a {
+      font-size: 12px;
       font-weight: bold;
-      color: #333333; }
+      color: #485f6f; }
       .post-in-listing .post-url a:hover, .user-in-listing .post-url a:hover {
         text-decoration: underline; }
 
@@ -426,6 +431,7 @@ form {
   .post-body h6 {
     font-size: 13px; }
   .post-body pre {
+    margin-top: 10px;
     width: 645px;
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;

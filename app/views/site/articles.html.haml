@@ -6,7 +6,4 @@
   .clear
 
 - @articles.each do |p|
-  .post-in-listing
-    .post-content
-      %h2.post-title= link_to(p[1], p[0])
-    .clear
+  = link_to(p[1], p[0])

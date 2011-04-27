@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110422184932) do
+ActiveRecord::Schema.define(:version => 20110427190528) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20110422184932) do
     t.boolean  "is_self"
     t.text     "processed_body"
     t.boolean  "is_approved"
+    t.text     "lead"
   end
 
   create_table "slugs", :force => true do |t|

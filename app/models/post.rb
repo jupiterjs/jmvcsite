@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :user
   validates_presence_of :tag_list
   
-  before_save :process_body
+  before_save :process_body, :add_lead
   before_save :set_is_approved
   
   scope :approved, where(:is_approved => true) 
@@ -46,9 +46,15 @@ class Post < ActiveRecord::Base
     #b = self.body.gsub(/(\s+|\A)(https?:\/\/[\S]+)(\s+|\z)/, ' <\2> ')
     self.processed_body = Sanitize.clean(
                             RDiscount.new(self.body.strip).to_html, 
-                            :elements => ['a', 'span', 'img', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'code', 'b', 'i', 'strong', 'em', 'ul', 'li', 'ol', 'hr', 'br'],
+                            :elements => ['a', 'span', 'img', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'code', 'b', 'i', 'strong', 'em', 'ul', 'li', 'ol', 'hr', 'br', 'p'],
                             :attributes => {'a' => ['href', 'title'], 'img' => ['src', 'title']},
                             :protocols => {'a' => {'href' => ['http', 'https', 'mailto']}})
+  end
+  
+  def add_lead
+    doc = Nokogiri::HTML(self.processed_body)
+    paras = doc.css('p')
+    self.lead = paras.first.content unless paras.blank?
   end
   
   def is_editable?

@@ -2,9 +2,11 @@ class Bucket
   
   def self.all
     [
-      {:name => 'Help', :tags => ['help', 'question'], :slug => 'help'},
-      {:name => 'Showcase', :tags => ['project', 'showcase'], :slug => 'showcase'},
-      {:name => 'Plugins', :tags => ['plugin'], :slug => 'plugins'}
+      #{:name => 'Help', :tags => ['help', 'question'], :slug => 'help'},
+      {:name => 'Apps', :tags => ['project', 'showcase', 'app', 'apps'], :slug => 'apps'},
+      {:name => 'Examples', :tags => ['example', 'examples'], :slug => 'examples'},
+      {:name => 'Plugins', :tags => ['plugin'], :slug => 'plugins'},
+      {:name => 'Articles', :tags => ['article', 'articles'], :slug => 'articles'},
     ]
   end
   
